@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306225910) do
+ActiveRecord::Schema.define(version: 20170307022306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,16 +30,9 @@ ActiveRecord::Schema.define(version: 20170306225910) do
     t.string   "store_image_content_type"
     t.integer  "store_image_file_size"
     t.datetime "store_image_updated_at"
-    t.string   "css_file_name"
-    t.string   "css_content_type"
-    t.integer  "css_file_size"
-    t.datetime "css_updated_at"
-    t.string   "background_file_name"
-    t.string   "background_content_type"
-    t.integer  "background_file_size"
-    t.datetime "background_updated_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "css_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -54,6 +47,13 @@ ActiveRecord::Schema.define(version: 20170306225910) do
     t.datetime "image_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "category"
+  end
+
+  create_table "slideshows", force: :cascade do |t|
+    t.integer  "layout_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stores", force: :cascade do |t|

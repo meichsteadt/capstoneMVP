@@ -1,10 +1,9 @@
 class LayoutsController < ApplicationController
-  before_action :set_layout, only: [:show, :edit, :update, :destroy]
 
   # GET /layouts
   # GET /layouts.json
   def index
-    @layouts = Layout.all
+    @slideshow = @layout.slideshow
   end
 
   # GET /layouts/1
@@ -62,13 +61,8 @@ class LayoutsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_layout
-      @layout = Layout.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def layout_params
-      params.fetch(:layout, {})
+      params.require(:layout).permit(:store_copy, :store_image, :css_id, :store_id)
     end
 end
