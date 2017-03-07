@@ -18,6 +18,11 @@ class LayoutsController < ApplicationController
 
   # GET /layouts/1/edit
   def edit
+    if @layout.update(layout_params)
+      respond_to do |format|
+        format.html { redirect_to '/', notice: 'Layout was successfully updated.' }
+      end
+    end
   end
 
   # POST /layouts
@@ -39,14 +44,14 @@ class LayoutsController < ApplicationController
   # PATCH/PUT /layouts/1
   # PATCH/PUT /layouts/1.json
   def update
-    respond_to do |format|
+    binding.pry
       if @layout.update(layout_params)
+        respond_to do |format|
         format.html { redirect_to @layout, notice: 'Layout was successfully updated.' }
-        format.json { render :show, status: :ok, location: @layout }
-      else
-        format.html { render :edit }
-        format.json { render json: @layout.errors, status: :unprocessable_entity }
+        format.js
       end
+      else
+        redirect_to '/'
     end
   end
 

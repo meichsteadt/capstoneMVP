@@ -6,7 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'casual', media: 'all', 'data-turbolinks-track': 'reload', id: 'style1' %>
+    <% if @layout.css_id == 1 %>
+      <%= stylesheet_link_tag    'casual', media: 'all', 'data-turbolinks-track': 'reload', id: 'style1' %>
+    <% else %>
+      <%= stylesheet_link_tag    'agency', media: 'all', 'data-turbolinks-track': 'reload', id: 'style2' %>
+    <% end %>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
   </head>
@@ -59,35 +63,26 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h1>HEllo</h1>
-            <button type="button" name="button">button</button>
+            <%= link_to(edit_layout_path(@layout, :layout => {css_id: @layout.change_css.to_i})) do %><button class="btn btn-default">button</button><% end %>
             <p><%= @store.name %> &copy;</p>
             <hr>
           </div>
           <div class="col-lg-12 text-center">
-            <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+            <% if @store.facebook? %>
+              <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
+            <% end %>
+            <% if @store.instagram? %>
+                <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-2x"></i></a>
+            <% end %>
+            <% if @store.twitter? %>
+              <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
+            <% end %>
+            <% if @store.pinterest? %>
+              <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-2x"></i></a>
+            <% end %>
           </div>
         </div>
       </div>
     </footer>
-
-
-    <script>
-      $(function() {
-        var style = 1
-        $('button').click(function() {
-          if(style === 1) {
-            $('#style1').remove();
-            $('head').append('<link rel="stylesheet" media="all" href="/assets/agency.self-c2af4f323f14f3d14ad7095ca860fdb3e5a090ca43804e57ffd71ef449e49b0b.css?body=1" data-turbolinks-track="reload" id="style2">');
-            style = 2
-          }
-          else if (style === 2) {
-            $('#style2').remove();
-            $('head').append('<link rel="stylesheet" media="all" href="/assets/casual.self-01bff32566f271fe794e70778b839f4d40b9cf5c2ee93822cca3aaee3beab117.css?body=1" data-turbolinks-track="reload" id="style1">')
-            style = 1;
-          }
-        })
-      })
-    </script>
   </body>
 </html>

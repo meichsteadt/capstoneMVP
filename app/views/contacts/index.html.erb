@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <hr>
+        <h2 class="intro-text text-center">Contact
+            <strong><%= @store.name %></strong>
+        </h2>
+        <hr>
+      </div>
+      <div class="col-md-12 text-center">
+        <p>Phone:
+            <strong><%= @store.phone %></strong>
+        </p>
+        <p>Email:
+            <strong><a href="<%= @store.email %>"><%= @store.email %></a></strong>
+        </p>
+        <p>Address:
+            <strong><%= @store.address%></strong>
+        </p>
+        <p>Hours:
+            <strong><%= @store.hours %></strong>
+        </p>
+        <% if @store.facebook? %>
+          <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-3x"></i></a>
+        <% end %>
+        <% if @store.instagram? %>
+            <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-3x"></i></a>
+        <% end %>
+        <% if @store.twitter? %>
+          <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-3x"></i></a>
+        <% end %>
+        <% if @store.pinterest? %>
+          <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-3x"></i></a>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+      <br>
+      <div class="col-md-8 col-md-offset-2">
+          <img class="img-responsive img-full map" src="img/map.jpg" >
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- /.container -->

@@ -8,7 +8,7 @@
       </div>
       <% @brands.each do |brand| %>
         <div class="col-md-4 text-center">
-            <%= link_to(brand_path(brand)) do %><img class="img img-responsive shadow" src="<%= brand.image %>" alt=""><% end %>
+            <%= link_to(brand.url, target: '_blank') do %><img class="img img-responsive shadow" src="<%= brand.image(:medium) %>" alt=""><% end %>
         </div>
       <% end %>
       <div class="clearfix"></div>
