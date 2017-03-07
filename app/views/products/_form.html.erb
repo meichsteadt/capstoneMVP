@@ -1,0 +1,31 @@
+
+<h3>Edit Product</h3>
+<%= form_for(@product) do |f| %>
+<%= render 'layouts/errors', :object => @product %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class:'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_field :description, class:'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :price %>
+  <%= f.text_field :price, class:'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :image %>
+  <%= f.file_field :image, class:'form-control' %>
+</div>
+<p>Category</p>
+<%= f.radio_button :category, 'dining' %>
+<%= f.label 'category_dining', 'Dining' %>
+<%= f.radio_button :category, 'bedroom' %>
+<%= f.label 'category_bedroom', 'Bedroom' %>
+<%= f.radio_button :category, 'living' %>
+<%= f.label 'category_living', 'Living Room' %>
+<div class="actions">
+  <%= f.submit class: 'btn btn-default' %>
+</div>
+<% end %>

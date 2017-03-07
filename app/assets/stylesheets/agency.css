@@ -116,12 +116,12 @@ i {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     max-width: 500px;
-  
+
 }
 
-.gallery>div>a>img {
-    width: 240px;
-    height: 200px;
+.gallery>div>a>img, .promo>div>a>img {
+    width: 360px;
+    height: 300px;
     margin: 0 auto;
     min-width: 280px;
 }
@@ -188,13 +188,13 @@ a:hover {
 .brand-name {
     margin: 0;
     font-size: 4em;
-} 
+}
 
 .navbar-default {
         background: #f6f6f6;
         background: rgba(255,255,255,0.9);
 
-    }   
+    }
 @media screen and (min-width:768px) {
     .brand {
         display: inherit;
@@ -299,24 +299,65 @@ a:hover {
     }
 }
 
+@media screen and (min-width: 992px) {
+    .carousel-inner>.item>a>img, .carousel-inner>.item>img,
+    .img-responsive, .thumbnail a>img, .thumbnail>img {
+        max-height: 435px;
+    }
+    .nav>li>a {
+        padding: 35px;
+    }
+}
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .carousel-inner>.item>a>img, .carousel-inner>.item>img,
+    .img-responsive, .thumbnail a>img, .thumbnail>img {
+        max-height: 530px;
+    }
+}
+
 .fa {
     padding: 5px;
 }
 
 a>.fa-facebook-square:hover {
     color: #3b5998;
-    transition: .5s;
+    transition: .6s;
 }
 
 a>.fa-instagram:hover {
     color: #fb3958;
+    transition: .6s;
 }
+
+a>.fa-twitter-square:hover {
+    color: #00aced;
+    transition: .6s;
+}
+
+a>.fa-pinterest:hover {
+    color: #bd081c;
+    transition: .6s;
+}
+
 a>i {
-    color:#333; 
+    color:#333;
 }
 
 .map {
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 }
-#563b61;
+
+.col-md-4 {
+  margin-top: 20px;
+}
+
+.brands .col-md-4 img{
+  margin: 0 auto;
+  width: 100%;
+}

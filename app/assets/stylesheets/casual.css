@@ -6,11 +6,14 @@
 
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url('http://bedroomsandmorefresno.com/img/bg.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+}
+
+.page {
+  background: url('http://bedroomsandmorefresno.com/img/bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
 h1,
@@ -345,12 +348,22 @@ margin-top: 20%;
 
 a>.fa-facebook-square:hover {
     color: #3b5998;
-    transition: .5s;
+    transition: .6s;
 }
 
 a>.fa-instagram:hover {
     color: #fb3958;
-    transition: .5s;
+    transition: .6s;
+}
+
+a>.fa-twitter-square:hover {
+    color: #00aced;
+    transition: .6s;
+}
+
+a>.fa-pinterest:hover {
+    color: #bd081c;
+    transition: .6s;
 }
 
 .price {

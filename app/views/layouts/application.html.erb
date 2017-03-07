@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CapstoneMVP</title>
+    <title>FurniturePress</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,73 +16,113 @@
   </head>
 
   <body>
-    <div class="logo">
-      <div class="brand"><%= link_to @store.name, '/' %></div>
-      <div class="address-bar" id="address"><%= @store.address %> | <%= @store.phone %></div>
-      <!-- Navigation -->
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-              <a class="navbar-brand" id="nameMobile" href="index.html"></a>
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gallery <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><%= link_to 'Dining', products_path(products: 'dining') %></li>
-                    <li><%= link_to 'Living Room', products_path(products: 'living') %></li>
-                    <li><%= link_to 'Bedroom', products_path(products: 'bedroom') %></li>
-                    <li><%= link_to 'Promotions', products_path(products: 'promos') %></li>
-                </ul>
-              </li>
-              <li><%= link_to 'Contact', contacts_path %></li>
-              <li><%= link_to 'Brands', brands_path %></li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-      </nav>
+    <div id="open-menu">
+      <i class="fa fa-caret-right"></i>
     </div>
-
-    <%= yield %>
-
-    <footer>
+    <div id="admin-menu">
+      <i id="close" class="fa fa-times fa-fw"></i>
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h1>HEllo</h1>
-            <%= link_to(edit_layout_path(@layout, :layout => {css_id: @layout.change_css.to_i})) do %><button class="btn btn-default">button</button><% end %>
-            <p><%= @store.name %> &copy;</p>
-            <hr>
-          </div>
-          <div class="col-lg-12 text-center">
-            <% if @store.facebook? %>
-              <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
-            <% end %>
-            <% if @store.instagram? %>
-                <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-2x"></i></a>
-            <% end %>
-            <% if @store.twitter? %>
-              <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
-            <% end %>
-            <% if @store.pinterest? %>
-              <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-2x"></i></a>
-            <% end %>
+          <div class="col-xs-10 col-xs-offset-1">
+            <div class="form-group css-buttons">
+              <h3>Layout/Design</h3>
+                <%= form_for @layout do |f| %>
+                  <%= link_to(layout_path(@layout, :layout => {:css_id => 1}), method: 'patch') do %>
+                    <%= f.radio_button :css_id, 1%>
+                    <%= f.label 'css_id_1', 'Business-Casual' %>
+                  <% end %>
+                  <%= link_to(layout_path(@layout, :layout => {:css_id => 2}), method: 'patch') do %>
+                    <%= f.radio_button :css_id, 2 %>
+                    <%= f.label 'css_id_2', 'Agency' %>
+                  <% end %>
+                <% end %>
+                <%= yield(:admin_menu) %>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+    <div class="page">
+      <div class="logo">
+        <div class="brand"><%= link_to @store.name, '/' %></div>
+        <div class="address-bar" id="address"><%= @store.address %> | <%= @store.phone %></div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" id="nameMobile" href="/"><%= @store.name %></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gallery <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><%= link_to 'Dining', products_path(products: 'dining') %></li>
+                      <li><%= link_to 'Living Room', products_path(products: 'living') %></li>
+                      <li><%= link_to 'Bedroom', products_path(products: 'bedroom') %></li>
+                      <li><%= link_to 'Promotions', products_path(products: 'promos') %></li>
+                  </ul>
+                </li>
+                <li><%= link_to 'Contact', store_path(@store) %></li>
+                <li><%= link_to 'Brands', brands_path %></li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+        </nav>
+      </div>
+
+      <%= yield %>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <p><%= @store.name %> &copy;</p>
+              <hr>
+            </div>
+            <div class="col-lg-12 text-center">
+              <% if @store.facebook? %>
+                <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
+              <% end %>
+              <% if @store.instagram? %>
+                  <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-2x"></i></a>
+              <% end %>
+              <% if @store.twitter? %>
+                <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
+              <% end %>
+              <% if @store.pinterest? %>
+                <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-2x"></i></a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      $('#close').click(function() {
+        $('#admin-menu').hide();
+        $('.page').css('width', '100%');
+        $('.page').css('margin-left', '');
+        $('.container').css('width', '')
+      })
+      $('#open-menu').click(function() {
+        $('#admin-menu').show();
+        $('.page').css('width', '70%');
+        $('.page').css('margin-left', '30%');
+        $('.container').css('width', '100%')
+      })
+    </script>
   </body>
 </html>

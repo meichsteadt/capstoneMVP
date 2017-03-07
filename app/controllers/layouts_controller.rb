@@ -19,9 +19,8 @@ class LayoutsController < ApplicationController
   # GET /layouts/1/edit
   def edit
     if @layout.update(layout_params)
-      respond_to do |format|
-        format.html { redirect_to '/', notice: 'Layout was successfully updated.' }
-      end
+      flash[:notice] = 'Layout was successfully updated.'
+      redirect_to(:back)
     end
   end
 
@@ -44,15 +43,8 @@ class LayoutsController < ApplicationController
   # PATCH/PUT /layouts/1
   # PATCH/PUT /layouts/1.json
   def update
-    binding.pry
-      if @layout.update(layout_params)
-        respond_to do |format|
-        format.html { redirect_to @layout, notice: 'Layout was successfully updated.' }
-        format.js
-      end
-      else
-        redirect_to '/'
-    end
+    @layout.update(layout_params)
+    redirect_to(:back)
   end
 
   # DELETE /layouts/1

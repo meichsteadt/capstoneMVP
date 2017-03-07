@@ -2,3 +2,69 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+
+.css-buttons {
+  margin-top: 20px;
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked+label {
+    background-color: rgba(0,0,0,0.1);
+  }
+  label {
+    display: block;
+    background-color: #ddd;
+    padding: 4px 11px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+#open-menu {
+  position: fixed;
+  z-index: 1000;
+  top: 70px;
+  background-color: rgb(220,220,220);
+  height: 100px;
+  width: 25px;
+  border: 1px solid #777;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  i {
+    font-size: 18px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+#admin-menu {
+  z-index: 1000;
+  display: none;
+  width: 30%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgb(220,220,220);
+  height: 100vh;
+  overflow: scroll; }
+#close {
+  position: absolute;
+  right: 10px;
+  top: 0; }
+#close::before {
+  z-index: 1001;
+  padding: 2.5px 3px;
+  border: 1px solid #777;
+  border-radius: 4px; }
+#close:hover::before {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #777;
+  cursor: pointer; }

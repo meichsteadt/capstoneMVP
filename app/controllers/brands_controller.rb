@@ -1,6 +1,16 @@
 class BrandsController < ApplicationController
   def index
-    @store = Store.new(name: 'Hello', address: '1234 main st. Portland, OR', phone: '(503) 555-5555')
     @brands = Brand.all
+  end
+
+  def update
+    @brand = Brand.find(params[:id])
+    @brand.update(brand_params)
+    redirect_to brands_path
+  end
+
+private
+  def brand_params
+    params.require(:brand).permit(:url, :name, :image)
   end
 end

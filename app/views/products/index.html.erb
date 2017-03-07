@@ -9,14 +9,18 @@
         <hr>
       </div>
       <div class="col-lg-12 text-center">
-          <p>At Sarah Marie's we have are always running into great deals on products. And we think it's our obligation to pass those savings on to our customers! Come look at our lineup of current promotional products.</p>
+          <p>At <%= @store.name %> we are always running into great deals on products. And we think it's our obligation to pass those savings on to our customers! Come look at our lineup of current promotional products.</p>
       </div>
-      <% @products.each do |product| %>
-        <div class="col-md-4 text-center">
-            <%= link_to(product_path(product)) do %><img class="img img-responsive shadow" src="<%= product.image %>" alt=""><% end %>
-            <h2><%= product.price %></h2>
-            <p><%= product.name %></p>
-        </div>
+      <% if @products.length > 0 %>
+        <% @products.each do |product| %>
+          <div class="col-md-4 text-center">
+              <%= link_to(product_path(product)) do %><img class="img img-responsive shadow" src="<%= product.image %>" alt=""><% end %>
+              <h2><%= product.price %></h2>
+              <p><%= product.name %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <h3>Unfortunately, there's no products in this category yet.</h3>
       <% end %>
       <div class="clearfix"></div>
     </div>
