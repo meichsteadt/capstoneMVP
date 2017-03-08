@@ -37,6 +37,17 @@
                   <% end %>
                 <% end %>
                 <%= yield(:admin_menu) %>
+                <h3>Edit Slideshow Images</h3>
+                <%= form_for @slideshow do |f| %>
+                  <% Product.all.each do |product| %>
+                    <% @slideshow.products.include?(product)? check = true : check = false %>
+                    <%= check_box_tag "products[]", product.id, check, id: product.id %>
+                    <%= label_tag product.id, product.name, class: 'slideshow-product' %>
+                    <br>
+                  <% end %>
+                  <br>
+                  <%= f.submit class: 'btn btn-default' %>
+                <% end %>
             </div>
           </div>
         </div>

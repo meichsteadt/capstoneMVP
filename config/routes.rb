@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :layouts
+  resources :slideshow
   root to: 'layouts#index'
   resources :products
   resources :brands do

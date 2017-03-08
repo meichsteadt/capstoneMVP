@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
   def find_store
     @store = Store.find(2)
     @layout = Layout.find_by_store_id(2)
+    @slideshow = @layout.slideshow
   end
 end
