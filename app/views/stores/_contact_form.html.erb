@@ -1,15 +1,5 @@
 <%= form_for(@store) do |f| %>
 <%= render 'layouts/errors', :object => @store %>
-<h3>User Login</h3>
-<div class="form-group">
-  <%= f.label :email %>
-  <%= f.text_field :email, class: 'form-control' %>
-</div>
-<div class="form-group">
-  <%= f.label 'password' %>
-  <%= f.password_field 'password', class: 'form-control' %>
-</div>
-<h3>Store Information</h3>
 <div class="form-group">
   <%= f.label :name, 'Store Name' %>
   <%= f.text_field :name, class:'form-control' %>

@@ -1,6 +1,6 @@
 <% content_for(:admin_menu) do %>
   <h3>Edit Contact</h3>
-  <%= render 'form' %>
+  <%= render 'contact_form' %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -26,16 +26,16 @@
             <strong><%= @store.hours %></strong>
         </p>
         <% if @store.facebook? %>
-          <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-3x"></i></a>
+          <a href="https://<%= @store.facebook %>"><i class="fa fa-facebook-square fa-3x"></i></a>
         <% end %>
         <% if @store.instagram? %>
-            <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-3x"></i></a>
+            <a href="https://<%= @store.instagram %>"><i class="fa fa-instagram fa-3x"></i></a>
         <% end %>
         <% if @store.twitter? %>
-          <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-3x"></i></a>
+          <a href="https://<%= @store.twitter %>"><i class="fa fa-twitter-square fa-3x"></i></a>
         <% end %>
         <% if @store.pinterest? %>
-          <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-3x"></i></a>
+          <a href="https://<%= @store.pinterest %>"><i class="fa fa-pinterest fa-3x"></i></a>
         <% end %>
       </div>
       <div class="clearfix"></div>

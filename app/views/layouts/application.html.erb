@@ -22,7 +22,9 @@
     <% if current_page?(new_store_path) %>
       <%= yield %>
     <% else %>
-    <%= render 'layouts/admin_menu' %>
+    <% if session[:admin] %>
+      <%= render 'layouts/admin_menu' %>
+    <% end %>
     <div class="page">
       <div class="logo">
         <div class="brand"><%= link_to @store.name, '/' %></div>
@@ -71,6 +73,11 @@
           <div class="row">
             <div class="col-lg-12 text-center">
               <p><%= @store.name %> &copy;</p>
+              <% if session[:admin] %>
+                <%= link_to 'Log Out', session_index_path %>
+              <% else %>
+                <%= link_to 'Log in here', new_session_path %>
+              <% end %>
               <hr>
             </div>
             <div class="col-lg-12 text-center">
