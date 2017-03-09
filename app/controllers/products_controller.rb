@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
+    @product = Product.new()
     @product_type = params[:products]
     @products = []
     if @product_type
@@ -23,15 +24,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    # binding.pry
+    if @product.save
+      flash[:notice] = "Product was saved"
+      redirect_back(fallback_location: products_path)
+    else
+      flash[:notice] = "Something went wrong"
     end
   end
 
@@ -64,6 +62,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:price, :image, :brand_id, :name, :slideshow_id, :description, :category)
+      params.require(:product).permit(:price, :image, :brand_id, :name, :description, :category)
     end
 end

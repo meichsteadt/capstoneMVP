@@ -43,6 +43,8 @@ group :development, :test do
   gem 'pry'
   gem "paperclip", "~> 5.0.0"
   gem 'bcrypt'
+  gem 'dotenv-rails'
+  gem 'rest-client'
 end
 
 group :development do

@@ -73,3 +73,18 @@
   background-color: rgba(255, 255, 255, 0.7);
   color: #777;
   cursor: pointer; }
+
+@media screen and (min-width: 992px) {
+    .carousel-inner>.item>a>img, .carousel-inner>.item>img,
+    .img-responsive, .thumbnail a>img, .thumbnail>img {
+        max-height: 435px;
+    }
+    .nav>li>a {
+        padding: 35px;
+    }
+}
+
+#map {
+ height: 400px;
+ width: 100%;
+}

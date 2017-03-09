@@ -3,7 +3,10 @@ class LayoutsController < ApplicationController
   # GET /layouts
   # GET /layouts.json
   def index
-    @slideshow = @layout.slideshow
+    if Store.all.length == 0
+      redirect_to new_store_path
+    end
+    @image = Image.new()
   end
 
   # GET /layouts/1

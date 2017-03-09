@@ -1,7 +1,7 @@
 class SlideshowController < ApplicationController
   def update
-    @slideshow.products = []
-    params[:products].each {|id| @slideshow.products.push(Product.find(id)) }
+    @slideshow.images = []
+    params[:images].each {|id| @slideshow.images.push(Image.find(id)) }
     redirect_to(:back)
   end
 end

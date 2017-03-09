@@ -6,53 +6,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <% if @layout.css_id == 1 %>
-      <%= stylesheet_link_tag    'casual', media: 'all', 'data-turbolinks-track': 'reload', id: 'style1' %>
-    <% else %>
-      <%= stylesheet_link_tag    'agency', media: 'all', 'data-turbolinks-track': 'reload', id: 'style2' %>
+    <% if @layout %>
+      <% if @layout.css_id == 1 %>
+        <%= stylesheet_link_tag    'casual', media: 'all', 'data-turbolinks-track': 'reload', id: 'style1' %>
+      <% else %>
+        <%= stylesheet_link_tag    'agency', media: 'all', 'data-turbolinks-track': 'reload', id: 'style2' %>
+      <% end %>
     <% end %>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
   </head>
 
   <body>
-    <div id="open-menu">
-      <i class="fa fa-caret-right"></i>
-    </div>
-    <div id="admin-menu">
-      <i id="close" class="fa fa-times fa-fw"></i>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <div class="form-group css-buttons">
-              <h3>Layout/Design</h3>
-                <%= form_for @layout do |f| %>
-                  <%= link_to(layout_path(@layout, :layout => {:css_id => 1}), method: 'patch') do %>
-                    <%= f.radio_button :css_id, 1%>
-                    <%= f.label 'css_id_1', 'Business-Casual' %>
-                  <% end %>
-                  <%= link_to(layout_path(@layout, :layout => {:css_id => 2}), method: 'patch') do %>
-                    <%= f.radio_button :css_id, 2 %>
-                    <%= f.label 'css_id_2', 'Agency' %>
-                  <% end %>
-                <% end %>
-                <%= yield(:admin_menu) %>
-                <h3>Edit Slideshow Images</h3>
-                <%= form_for @slideshow do |f| %>
-                  <% Product.all.each do |product| %>
-                    <% @slideshow.products.include?(product)? check = true : check = false %>
-                    <%= check_box_tag "products[]", product.id, check, id: product.id %>
-                    <%= label_tag product.id, product.name, class: 'slideshow-product' %>
-                    <br>
-                  <% end %>
-                  <br>
-                  <%= f.submit class: 'btn btn-default' %>
-                <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= flash[:notice] %>
+    <% if current_page?(new_store_path) %>
+      <%= yield %>
+    <% else %>
+    <%= render 'layouts/admin_menu' %>
     <div class="page">
       <div class="logo">
         <div class="brand"><%= link_to @store.name, '/' %></div>
@@ -105,16 +75,16 @@
             </div>
             <div class="col-lg-12 text-center">
               <% if @store.facebook? %>
-                <a href="<%= @store.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
+                <a href="https://<%= @store.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
               <% end %>
               <% if @store.instagram? %>
-                  <a href="<%= @store.instagram %>"><i class="fa fa-instagram fa-2x"></i></a>
+                  <a href="https://<%= @store.instagram %>"><i class="fa fa-instagram fa-2x"></i></a>
               <% end %>
               <% if @store.twitter? %>
-                <a href="<%= @store.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
+                <a href="https://<%= @store.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
               <% end %>
               <% if @store.pinterest? %>
-                <a href="<%= @store.pinterest %>"><i class="fa fa-pinterest fa-2x"></i></a>
+                <a href="https://<%= @store.pinterest %>"><i class="fa fa-pinterest fa-2x"></i></a>
               <% end %>
             </div>
           </div>
@@ -135,5 +105,6 @@
         $('.container').css('width', '100%')
       })
     </script>
+    <% end %>
   </body>
 </html>

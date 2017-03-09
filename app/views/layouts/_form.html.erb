@@ -13,3 +13,20 @@
     <%= f.submit class: 'btn btn-default'%>
   </div>
 <% end %>
+<h3>Edit Slideshow Images</h3>
+<%= form_for @slideshow do |f| %>
+  <% Image.all.each do |image| %>
+    <% @slideshow.images.include?(image)? check = true : check = false %>
+    <%= check_box_tag "images[]", image.id, check, id: image.id %>
+    <%= label_tag image.id, image.image_file_name, class: 'slideshow-product' %>
+    <br>
+  <% end %>
+  <br>
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>
+<br>
+<%= form_for [@slideshow, @image] do |f| %>
+  <%= f.label :image, 'New Image' %>
+  <%= f.file_field :image %>
+  <%= f.submit 'Add image', class: 'btn btn-default' %>
+<% end %>

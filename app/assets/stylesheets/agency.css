@@ -37,8 +37,7 @@ hr {
 .navbar-brand,
 .navbar-nav li a {
     line-height: 20px;
-    height: 20px;
-    padding-bottom: 33px;
+    padding: 20px 35px !important;
 }
 
 .navbar-default .navbar-brand {
@@ -105,6 +104,7 @@ i {
 
 .alsoView .col-sm-3 {
     margin-top: 25px;
+    height: 223px;
 }
 
 .product-img {
@@ -112,11 +112,10 @@ i {
 }
 
 .alsoView>div>a>img {
-    width: 85%;
+    width: 100%;
+    height: 100%;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
-    max-width: 500px;
-
 }
 
 .gallery>div>a>img, .promo>div>a>img {
@@ -360,4 +359,8 @@ a>i {
 .brands .col-md-4 img{
   margin: 0 auto;
   width: 100%;
+}
+
+.tagline-divider {
+  display: none;
 }
