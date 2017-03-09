@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
     # binding.pry
     if @product.save
       flash[:notice] = "Product was saved"
-      redirect_back(fallback_location: products_path)
+      redirect_to(products_path(products: @product.category))
     else
       flash[:notice] = "Something went wrong"
     end

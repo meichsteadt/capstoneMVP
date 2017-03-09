@@ -3,7 +3,7 @@
 <h3>User Login</h3>
 <div class="form-group">
   <%= f.label :email %>
-  <%= f.text_field :email, class: 'form-control' %>
+  <%= f.text_field :email, class: 'form-control', placeholder: 'your@email.com' %>
 </div>
 <div class="form-group">
   <%= f.label 'password' %>
@@ -12,46 +12,46 @@
 <h3>Store Information</h3>
 <div class="form-group">
   <%= f.label :name, 'Store Name' %>
-  <%= f.text_field :name, class:'form-control' %>
+  <%= f.text_field :name, class:'form-control', placeholder: 'Store Name' %>
 </div>
 <div class="form-group">
   <%= f.label :address %>
-  <%= f.text_field :address, class:'form-control' %>
+  <%= f.text_field :address, class:'form-control', placeholder: '1234 Main St. Porland OR 12345' %>
 </div>
 <div class="form-group">
   <%= f.label :hours %>
-  <%= f.text_field :hours, class:'form-control' %>
+  <%= f.text_field :hours, class:'form-control', placeholder: 'M-F: 10-8, Sat: 10-10, Sun: Closed' %>
 </div>
 <div class="form-group">
   <%= f.label :phone %>
-  <%= f.text_field :phone, class:'form-control' %>
+  <%= f.text_field :phone, class:'form-control', placeholder: '(555) 555-5555' %>
 </div>
 <div class="form-group">
     <%= f.label :facebook %>
     <div class="input-group">
     <div class="input-group-addon">https://</div>
-    <%= f.text_field :facebook, class:'form-control' %>
+    <%= f.text_field :facebook, class:'form-control', placeholder: 'facebook.com/storename' %>
   </div>
 </div>
 <div class="form-group">
   <%= f.label :twitter %>
   <div class="input-group">
     <div class="input-group-addon">https://</div>
-    <%= f.text_field :twitter, class:'form-control' %>
+    <%= f.text_field :twitter, class:'form-control', placeholder: 'twitter.com/storename' %>
 </div>
 </div>
 <div class="form-group">
   <%= f.label :instagram %>
   <div class="input-group">
     <div class="input-group-addon">https://</div>
-    <%= f.text_field :instagram, class:'form-control' %>
+    <%= f.text_field :instagram, class:'form-control', placeholder: 'instagram.com/storename' %>
 </div>
 </div>
 <div class="form-group">
   <%= f.label :pinterest %>
   <div class="input-group">
     <div class="input-group-addon">https://</div>
-    <%= f.text_field :pinterest, class:'form-control' %>
+    <%= f.text_field :pinterest, class:'form-control', placeholder: 'pinterest.com/storename' %>
 </div>
 </div>
 <div class="actions">
